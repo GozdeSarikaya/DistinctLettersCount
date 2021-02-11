@@ -1,5 +1,6 @@
 package main.exercise.processor;
 
+import main.exercise.algorithm.data.AlgorithmType;
 import main.exercise.exception.AlgorithmTypeInvalidException;
 import main.exercise.exception.FilePathInvalidException;
 
@@ -34,11 +35,11 @@ public class ProcessorParamsValidator {
         return filepath;
     }
 
-    private ProcessorEnum.AlgorithmType getAlgorithmTypeParameter() {
+    private AlgorithmType getAlgorithmTypeParameter() {
         try {
-            return ProcessorEnum.AlgorithmType.valueOf(vars[ProcessorConstants.ALGORITHM_PARAMETER_INDEX]);
+            return AlgorithmType.valueOf(vars[ProcessorConstants.ALGORITHM_PARAMETER_INDEX]);
         } catch (ArrayIndexOutOfBoundsException ex) {
-            return ProcessorEnum.AlgorithmType.valueOf(ProcessorConstants.DEFAULT_ALGORITHM);
+            return AlgorithmType.arrayset;
         } catch (IllegalArgumentException ex) {
             throw new AlgorithmTypeInvalidException(ex);
         }

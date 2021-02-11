@@ -1,19 +1,21 @@
 package main.exercise.processor;
 
+import main.exercise.algorithm.data.AlgorithmType;
+
 public class ProcessorParams {
 
     //region Members
     private final String filePath;
-    private final ProcessorEnum.AlgorithmType algorithmType;
+    private final AlgorithmType algorithmType;
     //endregion
 
     //region Constructor
-    private ProcessorParams(String filePath, ProcessorEnum.AlgorithmType algorithmType) {
+    private ProcessorParams(String filePath, AlgorithmType algorithmType) {
         this.filePath = filePath;
         this.algorithmType = algorithmType;
     }
 
-    public static ProcessorParams newInstance(String filePath, ProcessorEnum.AlgorithmType algorithmType) {
+    public static ProcessorParams newInstance(String filePath, AlgorithmType algorithmType) {
         return new ProcessorParams(filePath, algorithmType);
     }
     //endregion
@@ -23,7 +25,7 @@ public class ProcessorParams {
         return filePath;
     }
 
-    public ProcessorEnum.AlgorithmType getAlgorithmType() {
+    public AlgorithmType getAlgorithmType() {
         return algorithmType;
     }
     //endregion

@@ -39,7 +39,7 @@ public class ProcessorTest {
 
     @Test
     public void testRun__ProcessesLogFile_Algorithm1_WithoutPriorityQueue() {
-        String[] args = {"src/test/resources/logfile.txt", "without_pq"};
+        String[] args = {"src/test/resources/logfile.txt", "arrayset"};
         String test_result = processor.run(args);
         String result = "1 -> 1\n" + "2 -> 6\n" + "3 -> 0\n" + "4 -> 4\n" + "5 -> INVALID\n" + "6 -> INVALID\n" + "7 -> INVALID\n" + "8 -> 7\n";
 
@@ -49,7 +49,7 @@ public class ProcessorTest {
 
     @Test
     public void testRun__ProcessesLogFile_Algorithm1_WithPriorityQueue() {
-        String[] args = {"src/test/resources/logfile.txt", "with_pq"};
+        String[] args = {"src/test/resources/logfile.txt", "priorityqueue"};
         String test_result = processor.run(args);
         String result = "1 -> 1\n" + "2 -> 6\n" + "3 -> 0\n" + "4 -> 4\n" + "5 -> INVALID\n" + "6 -> INVALID\n" + "7 -> INVALID\n" + "8 -> 7\n";
 

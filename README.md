@@ -59,7 +59,7 @@ If one wants to change the log level, one can find _"src/main/resources/logback.
 
 ```
     <root level="debug">
-        <appender-ref ref="DistinctLetterCount" />
+        <appender-ref ref="DistinctLettersCount" />
     </root>
 ```
 
@@ -68,15 +68,21 @@ If one wants to change the log level, one can find _"src/main/resources/logback.
 The execution of the application requires an input file that can be passed as argument of the execution.
 
 ```
-java -jar target/DistinctLetterCount-1.0-SNAPSHOT.jar "[<absolute_path_to_input_file>] [<algorithm_type>]"
+java -jar target/DistinctLettersCount-1.0-SNAPSHOT.jar "[<absolute_path_to_input_file>] [<algorithm_type>]"
+```
+
+Algorithm type parameter is not necessary. The program will work with _"without_pq"_ algorithm by default, but it can be chosed as follows:
+```
+without_pq : it is implemented by using arrays and sets.
+with_pq : it is implemented by using priority queue.
 ```
 
 Examples of valid commands:
 
 ```
-java -jar target/DistinctLetterCount-1.0-SNAPSHOT.jar C:\Workspace\DistinctLetterCount\logfile.txt
-java -jar target/DistinctLetterCount-1.0-SNAPSHOT.jar C:\Workspace\DistinctLetterCount\logfile.txt 1
-java -jar target/DistinctLetterCount-1.0-SNAPSHOT.jar C:\Workspace\DistinctLetterCount\logfile.txt 2
+java -jar target/DistinctLettersCount-1.0-SNAPSHOT.jar C:\Workspace\DistinctLettersCount\logfile.txt
+java -jar target/DistinctLettersCount-1.0-SNAPSHOT.jar C:\Workspace\DistinctLettersCount\logfile.txt without_pq
+java -jar target/DistinctLettersCount-1.0-SNAPSHOT.jar C:\Workspace\DistinctLettersCount\logfile.txt with_pq
 ```
 
 Note:
@@ -93,15 +99,10 @@ A sample input file looks like this:
 
 
 ```
-
 aaaabbbb
-
 ccaaffddecee
-
 eeee
-
 example
-
 ```
 
 
@@ -119,14 +120,9 @@ The sample output for the sample input file above look like this:
 
 
 ```
-
 1- 1
-
 2- 6
-
 3- 0
-
 4- 4
-
 ```
 

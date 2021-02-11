@@ -1,16 +1,13 @@
 package test.exercise;
 
+import main.exercise.exception.AlgorithmTypeInvalidException;
 import main.exercise.exception.FilePathInvalidException;
-import main.exercise.exception.FileProcessException;
+import main.exercise.exception.ParameterInvalidException;
 import main.exercise.processor.Processor;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.slf4j.Logger;
-
-import java.io.IOException;
 
 import static org.mockito.MockitoAnnotations.initMocks;
 
@@ -40,6 +37,13 @@ public class ApplicationMainTest {
     @Test(expected = FilePathInvalidException.class)
     public void testRun_InvalidFilePath() throws FilePathInvalidException {
         String[] args = {"invalid"};
+        processor.run(args);
+    }
+
+
+    @Test(expected = AlgorithmTypeInvalidException.class)
+    public void testRun_InvalidAlgorithmType() throws AlgorithmTypeInvalidException {
+        String[] args = {"src/test/resources/logfile.txt", "pq"};
         processor.run(args);
     }
 }

@@ -1,9 +1,9 @@
 package main.exercise.processor;
 
+import main.exercise.exception.AlgorithmTypeInvalidException;
 import main.exercise.exception.FilePathInvalidException;
 
 import java.io.File;
-import java.nio.file.NoSuchFileException;
 
 public class ProcessorParamsValidator {
 
@@ -24,7 +24,7 @@ public class ProcessorParamsValidator {
     private String getFilePath() {
         String filepath;
         try {
-            filepath = vars[ProcessorConstants.FILE_PATH_PARAMETER_INDEX];
+            filepath = vars[ProcessorConstants.FILEPATH_PARAMETER_INDEX];
             File file = new File(filepath);
             if (!file.exists())
                 new File((String) null);
@@ -34,15 +34,15 @@ public class ProcessorParamsValidator {
         return filepath;
     }
 
-    private int getAlgorithmTypeParameter() {
-        int no;
+    private ProcessorEnum.AlgorithmType getAlgorithmTypeParameter() {
         try {
-            no = Integer.parseInt(vars[ProcessorConstants.ALGORITHM_PARAMETER_INDEX]);
-            if (no > 2) return ProcessorConstants.DEFAULT_ALGORITHM;
-            else return no;
-        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-            return ProcessorConstants.DEFAULT_ALGORITHM;
+            return ProcessorEnum.AlgorithmType.valueOf(vars[ProcessorConstants.ALGORITHM_PARAMETER_INDEX]);
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            return ProcessorEnum.AlgorithmType.valueOf(ProcessorConstants.DEFAULT_ALGORITHM);
+        } catch (IllegalArgumentException ex) {
+            throw new AlgorithmTypeInvalidException(ex);
         }
+
     }
 
     //endregion

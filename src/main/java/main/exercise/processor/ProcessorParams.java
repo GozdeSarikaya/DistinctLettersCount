@@ -4,16 +4,16 @@ public class ProcessorParams {
 
     //region Members
     private final String filePath;
-    private final int algorithmType;
+    private final ProcessorEnum.AlgorithmType algorithmType;
     //endregion
 
     //region Constructor
-    private ProcessorParams(String filePath, int algorithmType) {
+    private ProcessorParams(String filePath, ProcessorEnum.AlgorithmType algorithmType) {
         this.filePath = filePath;
         this.algorithmType = algorithmType;
     }
 
-    public static ProcessorParams newInstance(String filePath, int algorithmType) {
+    public static ProcessorParams newInstance(String filePath, ProcessorEnum.AlgorithmType algorithmType) {
         return new ProcessorParams(filePath, algorithmType);
     }
     //endregion
@@ -23,7 +23,7 @@ public class ProcessorParams {
         return filePath;
     }
 
-    public int getAlgorithmType() {
+    public ProcessorEnum.AlgorithmType getAlgorithmType() {
         return algorithmType;
     }
     //endregion

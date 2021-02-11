@@ -1,4 +1,4 @@
-# DistinctLettersCount
+# Distinct Letters Count
 
 ## Description
 Count the minimum number of letters that must be deleted from a word to create a word in which no two letters occur the same number of times.
@@ -18,13 +18,13 @@ Count the minimum number of letters that must be deleted from a word to create a
 ## Program Specification
 
 
-Write a program in Java, which can be run on the command line in order to solve this problem. The program will take one command line argument, which contains the path to a text file. This text file can contain several lines, each line describing one test case for the problem.
+This java program can be run on the command line in order to solve this problem. The program will take one command line argument, which contains the path to a text file. This text file can contain several lines, each line describing one test case for the problem.
 
 
 Each line contains a word S consisting of N lowercase letters. The minimum number of letters will be returned that must be deleted to obtain a word in which every letter occurs a unique number of times. The occurences of letters that appear at least one in result are the only considered ones.
 
 
-In case of a constraint violation, your program indicates this fact to the user, for example by throwing an exception with a descriptive message, allowing the user to address this problem.
+In case of a constraint violation, the program indicates this fact to the user, for example by throwing an exception with a descriptive message, allowing the user to address this problem.
 
 
 ## Project Hierarchy
@@ -68,13 +68,15 @@ If one wants to change the log level, one can find _"src/main/resources/logback.
 The execution of the application requires an input file that can be passed as argument of the execution.
 
 ```
-java -jar target/DistinctLetterCount-1.0-SNAPSHOT.jar "[<absolute_path_to_input_file>]"
+java -jar target/DistinctLetterCount-1.0-SNAPSHOT.jar "[<absolute_path_to_input_file>] [<algorithm_type>]"
 ```
 
 Examples of valid commands:
 
 ```
 java -jar target/DistinctLetterCount-1.0-SNAPSHOT.jar C:\Workspace\DistinctLetterCount\logfile.txt
+java -jar target/DistinctLetterCount-1.0-SNAPSHOT.jar C:\Workspace\DistinctLetterCount\logfile.txt 1
+java -jar target/DistinctLetterCount-1.0-SNAPSHOT.jar C:\Workspace\DistinctLetterCount\logfile.txt 2
 ```
 
 Note:

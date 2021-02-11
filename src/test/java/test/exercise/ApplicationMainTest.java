@@ -26,19 +26,19 @@ public class ApplicationMainTest {
     }
 
     @Test(expected = Exception.class)
-    public void testRun_EmptyArgs() throws FilePathInvalidException, IOException {
+    public void testRun_EmptyArgs() throws FilePathInvalidException {
         String[] args = {};
         processor.run(args);
     }
 
-    @Test(expected = FileProcessException.class)
-    public void testRun_EmptyFilePath() throws FileProcessException, IOException {
+    @Test(expected = FilePathInvalidException.class)
+    public void testRun_EmptyFilePath() throws FilePathInvalidException {
         String[] args = {""};
         processor.run(args);
     }
 
     @Test(expected = FilePathInvalidException.class)
-    public void testRun_InvalidFilePath() throws FilePathInvalidException, IOException {
+    public void testRun_InvalidFilePath() throws FilePathInvalidException {
         String[] args = {"invalid"};
         processor.run(args);
     }

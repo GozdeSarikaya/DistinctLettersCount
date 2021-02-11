@@ -4,17 +4,17 @@ public class ProcessorParams {
 
     //region Members
     private final String filePath;
-    private final int numberOfThreads;
+    private final int algorithmType;
     //endregion
 
     //region Constructor
-    private ProcessorParams(String filePath, int numberOfThreads) {
+    private ProcessorParams(String filePath, int algorithmType) {
         this.filePath = filePath;
-        this.numberOfThreads = numberOfThreads;
+        this.algorithmType = algorithmType;
     }
 
-    public static ProcessorParams newInstance(String filePath, int numberOfThreads) {
-        return new ProcessorParams(filePath, numberOfThreads);
+    public static ProcessorParams newInstance(String filePath, int algorithmType) {
+        return new ProcessorParams(filePath, algorithmType);
     }
     //endregion
 
@@ -23,8 +23,8 @@ public class ProcessorParams {
         return filePath;
     }
 
-    public int getNumberOfThreads() {
-        return numberOfThreads;
+    public int getAlgorithmType() {
+        return algorithmType;
     }
     //endregion
 }

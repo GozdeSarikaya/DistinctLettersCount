@@ -2,13 +2,13 @@ package main.exercise.processor;
 
 import main.exercise.exception.FilePathInvalidException;
 
+import java.io.File;
+import java.nio.file.NoSuchFileException;
+
 public class ProcessorParamsValidator {
 
     //region Members
-    public final int DEFAULT_THREAD_POOL_SIZE = 1;
 
-    private final int FILE_PATH_PARAMETER_INDEX = 0;
-    private final int NUMBER_OF_THREADS_PARAMETER_INDEX = 1;
 
     private final String[] vars;
 
@@ -22,27 +22,34 @@ public class ProcessorParamsValidator {
 
     //region Private Methods
     private String getFilePath() {
+        String filepath;
         try {
-            return vars[FILE_PATH_PARAMETER_INDEX];
-        } catch (ArrayIndexOutOfBoundsException e) {
+            filepath = vars[ProcessorConstants.FILE_PATH_PARAMETER_INDEX];
+            File file = new File(filepath);
+            if (!file.exists())
+                new File((String) null);
+        } catch (Exception e) {
             throw new FilePathInvalidException(e);
         }
+        return filepath;
     }
 
-    private int getNumberOfThreadsParameter() {
+    private int getAlgorithmTypeParameter() {
+        int no;
         try {
-            return Integer.parseInt(vars[NUMBER_OF_THREADS_PARAMETER_INDEX]);
+            no = Integer.parseInt(vars[ProcessorConstants.ALGORITHM_PARAMETER_INDEX]);
+            if (no > 2) return ProcessorConstants.DEFAULT_ALGORITHM;
+            else return no;
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-            return DEFAULT_THREAD_POOL_SIZE;
+            return ProcessorConstants.DEFAULT_ALGORITHM;
         }
-
     }
 
     //endregion
 
     //region Public Methods
-    public ProcessorParams getEventParameters() {
-        return ProcessorParams.newInstance(getFilePath(), getNumberOfThreadsParameter());
+    public ProcessorParams getParameters() {
+        return ProcessorParams.newInstance(getFilePath(), getAlgorithmTypeParameter());
     }
 
     //endregion
